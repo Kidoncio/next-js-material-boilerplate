@@ -4,8 +4,7 @@ import { EmotionCache, CacheProvider } from '@emotion/react'
 import DateAdapter from '@mui/lab/AdapterDateFns'
 import MuiLocalizationProvider from '@mui/lab/LocalizationProvider'
 import { CssBaseline } from '@mui/material'
-import { StyledEngineProvider, ThemeProvider as MaterialThemeProvider } from '@mui/material/styles'
-import { StylesProvider } from '@mui/styles'
+import { ThemeProvider as MaterialThemeProvider } from '@mui/material/styles'
 import { ptBR } from 'date-fns/locale'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
@@ -39,31 +38,27 @@ const MyApp: React.FC<MyAppProps> = ({
       </Head>
 
       <CacheProvider value={emotionCache}>
-        <StyledEngineProvider injectFirst>
-          <StylesProvider injectFirst>
-            <MaterialThemeProvider theme={materialTheme}>
-              <SWRConfig
-                value={{
-                  fetcher,
-                  revalidateOnMount: true,
-                }}
-              >
-                <MuiLocalizationProvider dateAdapter={DateAdapter} locale={ptBR}>
-                  <>
-                    <DefaultSeo
-                      title="NextJS Boilerplate"
-                      description="Next.js + Material UI 5 + SWR + Tailwind CSS"
-                    />
+        <MaterialThemeProvider theme={materialTheme}>
+          <SWRConfig
+            value={{
+              fetcher,
+              revalidateOnMount: true,
+            }}
+          >
+            <MuiLocalizationProvider dateAdapter={DateAdapter} locale={ptBR}>
+              <>
+                <DefaultSeo
+                  title="NextJS Boilerplate"
+                  description="Next.js + Material UI 5 + SWR + Tailwind CSS"
+                />
 
-                    <CssBaseline />
+                <CssBaseline />
 
-                    <Component {...pageProps} />
-                  </>
-                </MuiLocalizationProvider>
-              </SWRConfig>
-            </MaterialThemeProvider>
-          </StylesProvider>
-        </StyledEngineProvider>
+                <Component {...pageProps} />
+              </>
+            </MuiLocalizationProvider>
+          </SWRConfig>
+        </MaterialThemeProvider>
       </CacheProvider>
     </React.Fragment>
   )

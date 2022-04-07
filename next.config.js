@@ -3,7 +3,10 @@
  * */
 const nextConfig = {
   swcMinify: true,
-  styledComponents: true,
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  },
   experimental: {
     eslint: true,
   },

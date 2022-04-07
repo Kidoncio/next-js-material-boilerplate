@@ -16,6 +16,10 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={materialTheme.palette.primary.main} />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+          {/* Inject MUI styles first to match with the prepend: true configuration. */}
+          {/* @ts-ignore */}
+          {this.props.emotionStyleTags}
         </Head>
 
         <body>
